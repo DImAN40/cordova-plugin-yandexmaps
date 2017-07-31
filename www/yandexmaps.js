@@ -24,8 +24,7 @@ var exec = require('cordova/exec');
 module.exports = {
 
     /**
-     * Open a yandex navigator application with a path from A to B (if 4 points passed)
-     *  or from our current location to B (if only third and fourth points passed)
+     * Opens yandex maps application with a path from A to B
      *
      * @param {Float} latFrom
      * @param {Float} lonFrom

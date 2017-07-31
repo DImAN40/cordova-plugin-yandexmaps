@@ -38,7 +38,7 @@
         </config-file>
         <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
           <array>
-            <string>yandexnavi</string>
+            <string>yandexmaps</string>
           </array>
         </config-file>
         <js-module src="www/yandexmaps.js" name="Yandexmaps">
