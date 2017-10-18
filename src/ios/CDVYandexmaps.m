@@ -39,8 +39,7 @@
 	    [[UIApplication sharedApplication] openURL:naviURL];
 	} else {
 		// Попытка запуска Яндекс.Навигатор
-		NSString *URL = [NSString stringWithFormat: @"yandexnavi://build_route_on_map?%@lat_to=%@&lon_to=%@", from, lat_to, lon_to];
-		NSString* webStringURL = [URL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+		NSString* webStringURL = [NSString stringWithFormat: @"yandexnavi://build_route_on_map?%@lat_to=%@&lon_to=%@", from, lat_to, lon_to];
 		NSURL* naviURL = [NSURL URLWithString:webStringURL];
 		if ([[UIApplication sharedApplication] canOpenURL:naviURL]) {
 			[[UIApplication sharedApplication] openURL:naviURL];
