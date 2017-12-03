@@ -29,9 +29,8 @@
     NSString *lon_to = [NSString stringWithFormat:@"%@", [command argumentAtIndex:3]];
 
     NSURL *naviUrl = [NSURL URLWithString:[NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_to=%@&lon_to=%@", lat_to, lon_to]];
-    if ([[UIApplication sharedApplication] canOpenURL:naviUrl]) {
-        [[UIApplication sharedApplication] openURL:naviUrl];
-    }
+
+    [[UIApplication sharedApplication] openURL:naviUrl];
 }
 
 @end
