@@ -25,20 +25,20 @@ public class Yandexmaps extends CordovaPlugin {
     }
 
     private void open(JSONArray args, CallbackContext callbackContext) throws JSONException {
-		Intent intent = new Intent("ru.yandex.yandexmaps.action.BUILD_ROUTE_ON_MAP");
-        intent.setPackage("ru.yandex.yandexmaps");
+        Intent intent = new Intent("ru.yandex.yandexnavi.action.BUILD_ROUTE_ON_MAP");
+        intent.setPackage("ru.yandex.yandexnavi");
 
         PackageManager pm = this.cordova.getActivity().getPackageManager();
         List<ResolveInfo> infos = pm.queryIntentActivities(intent, 0);
 
-        // Проверяем, установлен ли Яндекс.Карты
+        // Проверяем, установлен ли Яндекс.Навигатор
         if (infos == null || infos.size() == 0) {
-			intent = new Intent("ru.yandex.yandexnavi.action.BUILD_ROUTE_ON_MAP");
-            intent.setPackage("ru.yandex.yandexnavi");
+            intent = new Intent("ru.yandex.yandexmaps.action.BUILD_ROUTE_ON_MAP");
+            intent.setPackage("ru.yandex.yandexmaps");
 
             infos = pm.queryIntentActivities(intent, 0);
 
-            // Проверяем, установлен ли Яндекс.Навигатор
+            // Проверяем, установлен ли Яндекс.Карты
             if (infos == null || infos.size() == 0) {
                 String googleURL = "google.navigation:q=" + args.getDouble(2)  + "," + args.getDouble(3) + "&mode=driving";
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse(googleURL));
