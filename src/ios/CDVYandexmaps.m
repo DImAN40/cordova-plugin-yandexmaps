@@ -23,8 +23,14 @@
 @implementation Yandexmaps
 
 - (void)open: (CDVInvokedUrlCommand*)command {
+    NSString *lat_from = [NSString stringWithFormat:@"%@", [command argumentAtIndex:0]];
+    NSString *lon_from = [NSString stringWithFormat:@"%@", [command argumentAtIndex:1]];
+    NSString *lat_to = [NSString stringWithFormat:@"%@", [command argumentAtIndex:2]];
+    NSString *lon_to = [NSString stringWithFormat:@"%@", [command argumentAtIndex:3]];
+
     [[UIApplication sharedApplication] openURL:
-        [NSURL URLWithString:@"yandexnavi://build_route_on_map?lat_to=55.70&lon_to=37.64"]];
+        [NSURL stringWithFormat:@"yandexnavi://build_route_on_map?lat_to=%@&lon_to=%@", lat_to, lon_to]];
+
 }
 
 @end
