@@ -28,15 +28,15 @@
     NSString *lat_to = [NSString stringWithFormat:@"%@", [command argumentAtIndex:2]];
     NSString *lon_to = [NSString stringWithFormat:@"%@", [command argumentAtIndex:3]];
 
-    // Попытка запуска Яндекс.Карты
-    NSURL *naviUrlYandexMaps = [NSURL URLWithString:[NSString stringWithFormat:@"yandexmaps://maps.yandex.ru/?rtext=%@,%@~%@,%@&rtt=auto", lat_from, lon_from, lat_to, lon_to]];
-    if ([[UIApplication sharedApplication] canOpenURL:naviUrlYandexMaps]) {
-        [[UIApplication sharedApplication] openURL:naviUrlYandexMaps];
-    } else {
-         // Попытка запуска Яндекс.Навигатор
-        NSURL *naviUrlYandexNavi = [NSURL URLWithString:[NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_to=%@&lon_to=%@", lat_to, lon_to]];
-        if ([[UIApplication sharedApplication] openURL:naviUrlYandexNavi]) {
+     // Попытка запуска Яндекс.Навигатор
+    NSURL *naviUrlYandexNavi = [NSURL URLWithString:[NSString stringWithFormat:@"yandexnavi://build_route_on_map?lat_to=%@&lon_to=%@", lat_to, lon_to]];
+    if ([[UIApplication sharedApplication] openURL:naviUrlYandexNavi]) {
 
+    } else {
+        // Попытка запуска Яндекс.Карты
+        NSURL *naviUrlYandexMaps = [NSURL URLWithString:[NSString stringWithFormat:@"yandexmaps://maps.yandex.ru/?rtext=%@,%@~%@,%@&rtt=auto", lat_from, lon_from, lat_to, lon_to]];
+        if ([[UIApplication sharedApplication] canOpenURL:naviUrlYandexMaps]) {
+            [[UIApplication sharedApplication] openURL:naviUrlYandexMaps];
         } else {
             // Попытка запуска Apple.Maps
             NSURL *naviUrlDefault = [NSURL URLWithString:[NSString stringWithFormat: @"http://maps.apple.com/?daddr=%@,%@", lat_to, lon_to]];
